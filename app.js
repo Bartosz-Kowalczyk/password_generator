@@ -10,6 +10,10 @@ class PasswordGenerator {
         this.symbolsCheckbox = document.querySelector('#symbols');
         this.generateButton = document.querySelector('#generate-password');
 
+        this.lengthInputArea = document.querySelector('.password-length');
+        this.optionsInputArea = document.querySelector('.options');
+        this.passwordsHistory = document.querySelector('#passwords-history');
+
         this.init();
     }
 
@@ -55,7 +59,7 @@ class PasswordGenerator {
     }
 
     getRandomSymbol() {
-        const symbols = `!@#$%^&*()_+|<>?-=`;
+        const symbols = `!@#$%^&*()_+|?-=`;
         return symbols[Math.floor(Math.random() * symbols.length)];
     }
 
@@ -64,9 +68,38 @@ class PasswordGenerator {
         return methods[Math.floor(Math.random() * methods.length)];
     }
 
+    removeAllActivated = () => {
+        this.lengthInputArea.onanimationend = () => {
+            this.lengthInputArea.classList.remove('activated');
+        }
+        this.optionsInputArea.onanimationend = () => {
+            this.optionsInputArea.classList.remove('activated');
+        }
+    }
+
+    moveToHistory = (password) => {
+        this.element = document.createElement('li');
+        this.passwordsHistory.appendChild(this.element);
+        this.element.textContent = password.textContent;
+    }
+
     generatePassword = () => {
-        if (!this.lengthInput.value) return;
-        if (this.selectedMethods.length === 0) return;
+
+        let isOptionSet = true;
+
+        if (!this.lengthInput.value || this.lengthInput.value === '0') {
+            this.lengthInputArea.classList.add('activated');
+            isOptionSet = false;
+        }
+
+        if (this.selectedMethods.length === 0) {
+            this.optionsInputArea.classList.add('activated');
+            isOptionSet = false;
+        }
+
+        this.removeAllActivated();
+
+        if (!isOptionSet) return;
 
         const arrIndexes = Array.from(Array(+this.lengthInput.value).keys());
 
@@ -76,12 +109,14 @@ class PasswordGenerator {
         }).join('');
 
         this.resultPassword.innerHTML = password;
+        this.moveToHistory(this.resultPassword);
+
     }
 
     copyToClipboard = () => {
         const toCopy = this.resultPassword.innerText;
         const clipboard = navigator.clipboard;
-        clipboard.writeText(toCopy).then(() => console.log('Password copied to clipboard.'))
+        clipboard.writeText(toCopy);
     }
 }
 

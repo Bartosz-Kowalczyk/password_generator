@@ -11,6 +11,7 @@ body {
   font-weight: 600;
   align-items: center;
   background-color: #00071a;
+  background: radial-gradient(ellipse farthest-corner at center center, #000000 0%, #000b29 90%);
   color: #fff;
   display: flex;
   font-family: "Abel", sans-serif;
@@ -26,6 +27,7 @@ h1 {
 }
 
 .generator-container {
+  position: sticky;
   background-color: #d1ddff;
   border-radius: 10px;
   box-shadow: 0px 10px 12px 3px rgba(0, 0, 0, 0.719);
@@ -91,6 +93,23 @@ button:active {
   justify-content: space-evenly;
 }
 
+.password-length.activated {
+  animation: shaker .2s 3;
+  transition: all;
+}
+
+@keyframes shaker {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(-1deg);
+  }
+}
+
 .password-lenght input {
   width: 130px;
 }
@@ -109,6 +128,11 @@ button:active {
   margin-bottom: 10px;
 }
 
+.options.activated {
+  animation: shaker .2s 3;
+  transition: all;
+}
+
 #generate-password {
   background-color: #eca100;
   border-radius: 5px;
@@ -121,4 +145,16 @@ button:active {
   height: 40px;
   padding: 4px 6px;
   width: 100%;
+}
+
+.passwords {
+  margin-top: 20px;
+  background-color: #0000000c;
+  font-size: 1rem;
+  align-items: right;
+  justify-content: right;
+}
+
+.passwords ul {
+  list-style: none;
 }
