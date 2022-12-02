@@ -7,8 +7,8 @@
 }
 
 body {
-    font-size: 1.2rem;
-    font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 600;
   align-items: center;
   background-color: #00071a;
   color: #fff;
@@ -31,13 +31,14 @@ h1 {
   box-shadow: 0px 10px 12px 3px rgba(0, 0, 0, 0.719);
   color: black;
   padding: 20px;
+  width: 400px;
 }
 
 .result-container {
   align-items: center;
   color: white;
   display: flex;
-  font-size: 3rem;
+  font-size: 1rem;
   height: 45px;
   justify-content: center;
   margin-bottom: 20px;
@@ -92,7 +93,6 @@ button:active {
 
 .password-lenght input {
   width: 130px;
- 
 }
 
 .option {
