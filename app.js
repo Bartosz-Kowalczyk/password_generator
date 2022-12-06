@@ -14,9 +14,6 @@ class PasswordGenerator {
         this.optionsInputArea = document.querySelector('.options');
         this.passwordsHistory = document.querySelector('#passwords-history');
 
-        this.historyPasswordButton = document.querySelectorAll('.small-btn');
-        this.historicPassword = document.querySelectorAll('.historic');
-
         this.init();
     }
 
@@ -27,6 +24,7 @@ class PasswordGenerator {
         this.generateButton.addEventListener('click', this.generatePassword);
 
         this.clipboardButton.addEventListener('click', this.copyToClipboard);
+        console.log(this.historyPasswordButton);
 
         this.updateOptions();
     }
@@ -81,10 +79,11 @@ class PasswordGenerator {
     }
 
     moveToHistory = (password) => {
+        const id = 0;
         this.element = document.createElement('li');
         this.passwordsHistory.appendChild(this.element);
 
-        const historyLine = `<button class="small-btn">${password.textContent}</button>`;
+        const historyLine = `<button class="small-btn" id="pass${id}">${password.textContent}</button>`;
 
         this.element.innerHTML = historyLine;
     }
@@ -116,7 +115,12 @@ class PasswordGenerator {
 
         this.resultPassword.innerHTML = password;
         this.moveToHistory(this.resultPassword);
+        this.addButtonListeners();
+    }
 
+    addButtonListeners = () => {
+        this.historyPasswordButton = document.querySelectorAll('.small-btn');
+        this.historyPasswordButton.forEach( button => addEventListener('click', this.copyHistoricToClipboard(button.childNodes)));
     }
 
     copyToClipboard = () => {
@@ -125,11 +129,14 @@ class PasswordGenerator {
         clipboard.writeText(toCopy);
     }
 
-    copyHistoricToClipboard = () => {
-        const toCopy = this.historic.innerText;
+    copyHistoricToClipboard = (buttons) => {
+        console.log(button[0].data);
+        const toCopy = button.text.nodeValue;
+        console.log(toCopy);
         const clipboard = navigator.clipboard;
         clipboard.writeText(toCopy);
     }
 }
 
 const passwordGenerator = new PasswordGenerator();
+
