@@ -177,19 +177,18 @@ button:active {
 .passwords li {
   display: inline-flex;
   justify-content: space-around;
-  padding: 5px;
-  background-color: var(--password-bg);
-  color: var(--password-font-color);
-  overflow-wrap: no-wrap;
-  margin: 3px;
-  border-radius: 5px;
-  height: 2rem;
 }
 
 .small-btn {
   background-color: var(--password-bg);
+  border-radius: 5px;
   border: none;
+  color: var(--password-font-color);
   cursor: pointer;
+  height: 2rem;
+  margin: 3px;
+  overflow-wrap: no-wrap;
+  padding: 5px;
 }
 
 .passwords li.activated {

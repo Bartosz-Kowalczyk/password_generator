@@ -84,7 +84,7 @@ class PasswordGenerator {
         this.element = document.createElement('li');
         this.passwordsHistory.appendChild(this.element);
 
-        const historyLine = `<button class="small-btn">📋</button><p class="historic">${password.textContent}</p>`;
+        const historyLine = `<button class="small-btn">${password.textContent}</button>`;
 
         this.element.innerHTML = historyLine;
     }
