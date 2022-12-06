@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🔑 Password generator</title>
+    <title>Password generator</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="generator-container">
-      <h1>🔑 Password generator 💪</h1>
+      <h1>🔑 Password generator</h1>
       <div class="result-container">
         <span id="result"></span>
         <button class="btn" id="clipboard">📋</button>
@@ -29,23 +30,27 @@
       <div class="options">
         <div class="option">
           <label>Uppercase:</label>
-          <input type="checkbox" id="uppercase" />
+          <input type="checkbox" id="uppercase" checked/>
         </div>
         <div class="option">
           <label>Numbers</label>
-          <input type="checkbox" id="numbers" />
+          <input type="checkbox" id="numbers" checked/>
         </div>
         <div class="option">
           <label>Lowercase:</label>
-          <input type="checkbox" id="lowercase" />
+          <input type="checkbox" id="lowercase" checked/>
         </div>
         <div class="option">
           <label>Symbols:</label>
-          <input type="checkbox" id="symbols" />
+          <input type="checkbox" id="symbols" checked/>
         </div>
       </div>
       <button id="generate-password" class="btn">Generate 🔑</button>
+      <div class="passwords">
+        <ul id="passwords-history"></ul>
+      </div>
     </div>
+
     <script src="app.js"></script>
   </body>
 </html>
