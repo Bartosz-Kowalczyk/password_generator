@@ -14,6 +14,9 @@ class PasswordGenerator {
         this.optionsInputArea = document.querySelector('.options');
         this.passwordsHistory = document.querySelector('#passwords-history');
 
+        this.historyPasswordButton = document.querySelectorAll('.small-btn');
+        this.historicPassword = document.querySelectorAll('.historic');
+
         this.init();
     }
 
@@ -80,7 +83,10 @@ class PasswordGenerator {
     moveToHistory = (password) => {
         this.element = document.createElement('li');
         this.passwordsHistory.appendChild(this.element);
-        this.element.textContent = password.textContent;
+
+        const historyLine = `<button class="small-btn">📋</button><p class="historic">${password.textContent}</p>`;
+
+        this.element.innerHTML = historyLine;
     }
 
     generatePassword = () => {
@@ -115,6 +121,12 @@ class PasswordGenerator {
 
     copyToClipboard = () => {
         const toCopy = this.resultPassword.innerText;
+        const clipboard = navigator.clipboard;
+        clipboard.writeText(toCopy);
+    }
+
+    copyHistoricToClipboard = () => {
+        const toCopy = this.historic.innerText;
         const clipboard = navigator.clipboard;
         clipboard.writeText(toCopy);
     }

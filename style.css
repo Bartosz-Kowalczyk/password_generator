@@ -8,6 +8,8 @@
 
 :root {
   --light-bg: #d1ddff;
+  --password-bg: #00154e;
+  --password-font-color: #ecd500;
 }
 
 body {
@@ -17,13 +19,16 @@ body {
   font-weight: 600;
   align-items: center;
   background-color: #00071a;
-  background: radial-gradient(ellipse farthest-corner at center center, #000000 0%, #000b29 90%);
+  background: radial-gradient(
+    ellipse farthest-corner at center center,
+    #000000 0%,
+    #000b29 90%
+  );
   color: #fff;
   display: flex;
   font-family: "Abel", sans-serif;
   height: 100vh;
-  justify-content: center;
-  width: 100vw;
+  max-width: 100vw;
 }
 
 h1 {
@@ -33,6 +38,7 @@ h1 {
 }
 
 .generator-container {
+  margin-top: 50px;
   position: absolute;
   background-color: var(--light-bg);
   border-radius: 10px;
@@ -55,8 +61,8 @@ h1 {
 }
 
 .result-container #result {
-  background-color: #00154e;
-  color: #ecd500;
+  background-color: var(--password-bg);
+  color: var(--password-font-color);
   height: 42px;
   overflow: hidden;
   padding: 10px;
@@ -101,7 +107,7 @@ button:active {
 }
 
 .password-length.activated {
-  animation: shaker .2s 3;
+  animation: shaker 0.2s 3;
   transition: all;
 }
 
@@ -136,7 +142,7 @@ button:active {
 }
 
 .options.activated {
-  animation: shaker .2s 3;
+  animation: shaker 0.2s 3;
   transition: all;
 }
 
@@ -155,24 +161,37 @@ button:active {
 }
 
 .passwords {
+  max-height: 400px;
   margin-top: 20px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   justify-content: center;
+  overflow-y:auto;;
 }
 
 .passwords ul {
-  display: flex;
-  flex-direction: row;
+  display: list-item;
   list-style: none;
   padding: 2px;
 }
 
 .passwords li {
-  padding: 3px;
-  background-color: #00000021;
-  border-radius: 10px;
+  display: inline-flex;
+  justify-content: space-around;
+  padding: 5px;
+  background-color: var(--password-bg);
+  color: var(--password-font-color);
+  overflow-wrap: no-wrap;
+  margin: 3px;
+  border-radius: 5px;
+  height: 2rem;
 }
 
-.passwords li::before {
-  content: '🔑 ';
+.small-btn {
+  background-color: var(--password-bg);
+  border: none;
+  cursor: pointer;
+}
+
+.passwords li.activated {
+  visibility: none;
 }
